@@ -1,7 +1,8 @@
 package com.quyon.CustomerException;
 
-public class BaggageExceedLimitExceptiom extends RuntimeException {
+public class BaggageExceedLimit implements OutBounds {
     /*
+    * 单间行李超出上限异常
     * 错误返回码retCd：
     * 1 重量超出限制
     * 2 总尺寸超出限制
@@ -11,18 +12,21 @@ public class BaggageExceedLimitExceptiom extends RuntimeException {
      */
     private int retCd;
     private String mesDes;
-    public BaggageExceedLimitExceptiom(int _retCd,String _mesDes){
-        super(_mesDes);
+
+    public BaggageExceedLimit(int _retCd, String _mesDes){
         assert (_retCd>0&&_retCd<6);
         retCd = _retCd;
         mesDes = _mesDes;
     }
 
+    @Override
+    public int getTypeCode() {
+        return retCd;
+    }
+
+    @Override
     public String getMessage() {
         return mesDes;
     }
 
-    public int getRetCd() {
-        return retCd;
-    }
 }

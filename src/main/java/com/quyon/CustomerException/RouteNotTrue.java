@@ -1,10 +1,14 @@
 package com.quyon.CustomerException;
 
-public class RouteNotTrueException extends RuntimeException {
+public class RouteNotTrue implements OutBounds {
     private String mesDes;
-    public RouteNotTrueException(String message){
-        super(message);
+    public RouteNotTrue(String message){
         mesDes = message;
+    }
+
+    @Override
+    public int getTypeCode() {
+        return 0;
     }
 
     public String getMessage() {

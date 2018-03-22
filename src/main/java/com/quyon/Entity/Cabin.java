@@ -1,12 +1,12 @@
 package com.quyon.Entity;
 
-public class Cabin {
-    /*
-    * cabin ：舱位类型
-    * 1：头等舱
-    * 2：公务舱
-    * 3：明珠经济舱
-    * 4：经济舱
+public enum Cabin {
+    /**
+     * 舱位类型
+     * FirstClass头等舱
+     * BussinessClass商务舱
+     * EconomyClass经济舱
+     * PearlEconomyClass明珠经济舱
      */
-    private int cabin;
+    FirstClass,BussinessClass,EconomyClass,PearlEconomyClass
 }

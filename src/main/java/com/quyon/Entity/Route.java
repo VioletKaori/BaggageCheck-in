@@ -1,6 +1,6 @@
 package com.quyon.Entity;
 
-import com.quyon.CustomerException.RouteNotTrueException;
+import com.quyon.CustomerException.RouteNotTrue;
 
 public class Route {
     /*航线类型
@@ -12,17 +12,20 @@ public class Route {
     private boolean international;
     private boolean arriveUSA;
 
-    public Route(boolean _domestic,boolean _international,boolean _arriveUSA) throws RouteNotTrueException{
-        if (_domestic == _international)
-            throw new RouteNotTrueException("domestic的值不能与international相同");
-        if (_domestic==_arriveUSA && _arriveUSA)
-            throw new RouteNotTrueException("domestic的值不能与arriveUSA同时为true");
-
+    public Route(boolean _domestic,boolean _international,boolean _arriveUSA) {
         domestic = _domestic;
         international = _international;
         arriveUSA = _arriveUSA;
     }
 
+    public RouteNotTrue checkRoute(){
+        if (domestic == international)
+            return new RouteNotTrue("domestic的值不能与international相同");
+        if (domestic==arriveUSA && arriveUSA)
+            return new RouteNotTrue("domestic的值不能与arriveUSA同时为true");
+        return null;
+
+    }
     public boolean isDomestic() {
         return domestic;
     }
