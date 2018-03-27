@@ -2,7 +2,7 @@ package com.quyon.CustomerException;
 
 public class BaggageExceedLimit implements OutBounds {
     /*
-    * 单间行李超出上限异常
+    * 单件行李超出上限
     * 错误返回码retCd：
     * 1 重量超出限制
     * 2 总尺寸超出限制

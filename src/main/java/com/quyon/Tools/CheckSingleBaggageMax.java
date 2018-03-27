@@ -23,7 +23,7 @@ public final class CheckSingleBaggageMax {
         }
 
         if (route.isInternational()){//国际航班
-            if (baggage.getSize() > 158)
+            if (baggage.getSize() > 300)//修改网页规定，158->300
                 return new BaggageExceedLimit(2,"该件行李总尺寸超出限制"+(baggage.getSize()-158)+"cm");
             if(route.isArriveUSA()) {//到达美国
                 if (baggage.getWeight() > 45)
