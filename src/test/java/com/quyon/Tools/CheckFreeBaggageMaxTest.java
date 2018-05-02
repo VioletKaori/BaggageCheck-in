@@ -2,23 +2,25 @@ package com.quyon.Tools;
 
 import com.quyon.CustomerException.BaggageExceedFree;
 import com.quyon.Entity.*;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
+import static org.testng.Assert.*;
 
-class CheckFreeBaggageMaxTest {
+public class CheckFreeBaggageMaxTest {
 
     private Regional regional;
     private PassengerType passengerType;
     private DiscountPassengers discountPassengers;
     private Cabin cabin;
-    private ArrayList<Baggage>baggages = new ArrayList<>();
+    private ArrayList<Baggage> baggages = new ArrayList<>();
     private ArrayList<BaggageExceedFree> baggageExceedFreeArrayList;
-    @BeforeEach
-    void setUp() {
+
+    @BeforeMethod
+    public void setUp() {
         regional = Regional.AreaFour;
         passengerType = PassengerType.Adult;
         discountPassengers = DiscountPassengers.GoldMember;
@@ -28,18 +30,19 @@ class CheckFreeBaggageMaxTest {
         baggages.add(new Baggage(20,39,23,12));
     }
 
-    @Test
-    void check() {
-        baggageExceedFreeArrayList = CheckFreeBaggageMax.check(regional,passengerType,discountPassengers,cabin,baggages);
-    }
-    @AfterEach
-    void tearDown(){
+    @AfterMethod
+    public void tearDown() {
         if (baggageExceedFreeArrayList.size()==0){
             System.out.print("该乘客的行李可以免费托运");
         }else {
             for (BaggageExceedFree e:baggageExceedFreeArrayList){
-            System.out.println(e.getMessage());
+                System.out.println(e.getMessage());
             }
         }
+    }
+
+    @Test
+    public void testCheck() {
+        baggageExceedFreeArrayList = CheckFreeBaggageMax.check(regional,passengerType,discountPassengers,cabin,baggages);
     }
 }
